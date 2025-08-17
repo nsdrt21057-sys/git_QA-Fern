@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.7 on win32)" generated="2025-08-17T15:24:06.924171" rpa="false" schemaversion="5">
+<suite id="s1" name="Web Table Loop" source="C:\Users\Entronica\Desktop\ATM\Testcase\web_table_loop.robot">
+<test id="s1-t1" name="Advanced Web Table Interaction" line="11">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-08-17T15:24:07.103735" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 1000.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Entronica\\Desktop\\ATM\\Testcase\\result\\browser\\traces\\temp\\b0d9d8ef-b3e1-47ee-803a-180e67e75a76"}</msg>
+<msg time="2025-08-17T15:24:07.128398" level="INFO">Starting Browser process C:\Users\Entronica\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:60239</msg>
+<msg time="2025-08-17T15:24:08.467931" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":1000,"timeout":30000,"tracesDir":"C:\\Users\\Entronica\\Desktop\\ATM\\Testcase\\result\\browser\\traces\\temp\\b0d9d8ef-b3e1-47ee-803a-180e67e75a76"}</msg>
+<arg>headless=false</arg>
+<arg>slowMo=1s</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-08-17T15:24:07.103062" elapsed="1.365173"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2025-08-17T15:24:08.471470" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "height": 720,
+    "width": 1280
+  }
+}</msg>
+<msg time="2025-08-17T15:24:08.501195" level="INFO">Successfully created context. </msg>
+<msg time="2025-08-17T15:24:08.501325" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'height': 720, 'width': 1280}}</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2025-08-17T15:24:08.468961" elapsed="0.032482"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-08-17T15:24:13.858454" level="INFO">Successfully initialized new page object and opened url: https://demoqa.com/webtables</msg>
+<arg>https://demoqa.com/webtables</arg>
+<arg>wait_until=load</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-08-17T15:24:08.501998" elapsed="5.356615"/>
+</kw>
+<kw name="Scroll To Element" owner="Browser">
+<arg>//div[@class="rt-table"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>This method waits for actionability checks, then tries to scroll element into view,
+unless it is completely visible.</doc>
+<status status="PASS" start="2025-08-17T15:24:13.858910" elapsed="1.076585"/>
+</kw>
+<kw name="Get Element Count" owner="Browser">
+<msg time="2025-08-17T15:24:14.943984" level="INFO">${rows} = 3</msg>
+<var>${rows}</var>
+<arg>//div[@class='rt-tr -odd' or @class='rt-tr -even']</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.936301" elapsed="0.007747"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${rows}</arg>
+<arg>${3}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.944507" elapsed="0.000712"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-08-17T15:24:14.969607" level="INFO">Text: 'cierra@example.com'</msg>
+<msg time="2025-08-17T15:24:14.969802" level="INFO">${email} = cierra@example.com</msg>
+<var>${email}</var>
+<arg>xpath=(//div[@class="rt-tbody"]/div[@class="rt-tr-group"])[${index+1}]/div[@class="rt-tr -odd" or @class="rt-tr -even"]/div[4]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.946552" elapsed="0.023286"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-17T15:24:14.970360" level="INFO">Checking Email: cierra@example.com</msg>
+<arg>Checking Email: ${email}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.970045" elapsed="0.000379"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${email}</arg>
+<arg>@example.com</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.970616" elapsed="0.000292"/>
+</kw>
+<var name="${index}">0</var>
+<status status="PASS" start="2025-08-17T15:24:14.946147" elapsed="0.024826"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-08-17T15:24:14.986030" level="INFO">Text: 'alden@example.com'</msg>
+<msg time="2025-08-17T15:24:14.986196" level="INFO">${email} = alden@example.com</msg>
+<var>${email}</var>
+<arg>xpath=(//div[@class="rt-tbody"]/div[@class="rt-tr-group"])[${index+1}]/div[@class="rt-tr -odd" or @class="rt-tr -even"]/div[4]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.971303" elapsed="0.014944"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-17T15:24:14.986727" level="INFO">Checking Email: alden@example.com</msg>
+<arg>Checking Email: ${email}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.986442" elapsed="0.000472"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${email}</arg>
+<arg>@example.com</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.987235" elapsed="0.000403"/>
+</kw>
+<var name="${index}">1</var>
+<status status="PASS" start="2025-08-17T15:24:14.971143" elapsed="0.016556"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="Browser">
+<msg time="2025-08-17T15:24:15.004271" level="INFO">Text: 'kierra@example.com'</msg>
+<msg time="2025-08-17T15:24:15.004432" level="INFO">${email} = kierra@example.com</msg>
+<var>${email}</var>
+<arg>xpath=(//div[@class="rt-tbody"]/div[@class="rt-tr-group"])[${index+1}]/div[@class="rt-tr -odd" or @class="rt-tr -even"]/div[4]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:14.988007" elapsed="0.016456"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-17T15:24:15.004938" level="INFO">Checking Email: kierra@example.com</msg>
+<arg>Checking Email: ${email}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-17T15:24:15.004648" elapsed="0.000340"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${email}</arg>
+<arg>@example.com</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-08-17T15:24:15.005102" elapsed="0.000200"/>
+</kw>
+<var name="${index}">2</var>
+<status status="PASS" start="2025-08-17T15:24:14.987843" elapsed="0.017514"/>
+</iter>
+<var>${index}</var>
+<value>${rows}</value>
+<status status="PASS" start="2025-08-17T15:24:14.945551" elapsed="0.059863"/>
+</for>
+<for flavor="IN">
+<iter>
+<kw name="Click" owner="Browser">
+<msg time="2025-08-17T15:24:15.006863" level="INFO">Clicks the element 'id=addNewRecordButton'.</msg>
+<arg>id=addNewRecordButton</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:15.006414" elapsed="1.081779"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-08-17T15:24:16.089201" level="INFO">Fills the text 'J' in the given field.</msg>
+<arg>id=firstName</arg>
+<arg>${user_data}[0]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:16.088584" elapsed="1.023729"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-08-17T15:24:17.113183" level="INFO">Fills the text 'o' in the given field.</msg>
+<arg>id=lastName</arg>
+<arg>${user_data}[1]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:17.112486" elapsed="1.016248"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-08-17T15:24:18.129550" level="INFO">Fills the text 'h' in the given field.</msg>
+<arg>id=userEmail</arg>
+<arg>${user_data}[2]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:18.128914" elapsed="1.021912"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-08-17T15:24:19.151893" level="INFO">Fills the text 'n' in the given field.</msg>
+<arg>id=age</arg>
+<arg>${user_data}[3]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-08-17T15:24:19.151078" elapsed="1.031432"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-08-17T15:24:20.183598" level="FAIL">String '${user_data}' has no item in index 4.</msg>
+<arg>id=salary</arg>
+<arg>${user_data}[4]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="FAIL" start="2025-08-17T15:24:20.182887" elapsed="0.000932">String '${user_data}' has no item in index 4.</status>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<arg>id=department</arg>
+<arg>${user_data}[5]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.184031" elapsed="0.000122"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>id=submit</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.184276" elapsed="0.000076"/>
+</kw>
+<var name="${user_data}">John</var>
+<status status="FAIL" start="2025-08-17T15:24:15.006243" elapsed="5.178190">String '${user_data}' has no item in index 4.</status>
+</iter>
+<var>${user_data}</var>
+<value>@{USERS_TO_ADD}</value>
+<status status="FAIL" start="2025-08-17T15:24:15.005955" elapsed="5.178563">String '${user_data}' has no item in index 4.</status>
+</for>
+<kw name="Get Element Count" owner="Browser">
+<var>${final_rows}</var>
+<arg>//div[@class="rt-tbody"]/div[@class="rt-tr-group"]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.184946" elapsed="0.000116"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${expected}</var>
+<arg>${rows} + len(${USERS_TO_ADD})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.185369" elapsed="0.000107"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${final_rows}</arg>
+<arg>${expected}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.185869" elapsed="0.000106"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Text" owner="Browser">
+<var>${age}</var>
+<arg>xpath=(//div[@class="rt-tbody"]/div[@class="rt-tr-group"])[${index+1}]/div[@class="rt-tr -odd" or @class="rt-tr -even"]/div[3]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.186530" elapsed="0.000061"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>Found age: ${age}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.186700" elapsed="0.000051"/>
+</kw>
+<if>
+<branch type="IF" condition="'${age}' == '45'">
+<kw name="Click" owner="Browser">
+<arg>xpath=(//div[@class="rt-tbody"]/div[@class="rt-tr-group"])[${index+1}]//span[contains(@id,"delete-record")]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.187014" elapsed="0.000049"/>
+</kw>
+<break>
+<status status="NOT RUN" start="2025-08-17T15:24:20.187115" elapsed="0.000047"/>
+</break>
+<status status="NOT RUN" start="2025-08-17T15:24:20.186885" elapsed="0.000311"/>
+</branch>
+<status status="NOT RUN" start="2025-08-17T15:24:20.186815" elapsed="0.000412"/>
+</if>
+<var name="${index}"/>
+<status status="NOT RUN" start="2025-08-17T15:24:20.186393" elapsed="0.000854"/>
+</iter>
+<var>${index}</var>
+<value>${final_rows}</value>
+<status status="NOT RUN" start="2025-08-17T15:24:20.186160" elapsed="0.001121"/>
+</for>
+<kw name="Get Element Count" owner="Browser">
+<var>${after_delete}</var>
+<arg>//div[@class="rt-tbody"]/div[@class="rt-tr-group"]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the count of elements found with ``selector``.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.187515" elapsed="0.000069"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${after_delete}</arg>
+<arg>${expected - 1}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.187714" elapsed="0.000053"/>
+</kw>
+<kw name="Close Browser" owner="Browser">
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-08-17T15:24:20.187912" elapsed="0.000048"/>
+</kw>
+<msg time="2025-08-17T15:24:20.201448" level="INFO">Switching context to context=8f265e98-f1e0-465c-9bf1-eeb6733d8c52 in CURRENT</msg>
+<msg time="2025-08-17T15:24:20.212980" level="INFO">Successfully changed active context: context=8f265e98-f1e0-465c-9bf1-eeb6733d8c52</msg>
+<msg time="2025-08-17T15:24:20.308918" level="INFO">Successfully closed Context</msg>
+<doc>Test case for interacting with a web table on demoqa.com</doc>
+<status status="FAIL" start="2025-08-17T15:24:07.102105" elapsed="13.086109">String '${user_data}' has no item in index 4.</status>
+</test>
+<status status="FAIL" start="2025-08-17T15:24:06.925679" elapsed="13.385423"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Web Table Loop" id="s1" pass="0" fail="1" skip="0">Web Table Loop</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

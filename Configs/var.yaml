@@ -1,0 +1,19 @@
+string_value: "Hello, Robot Framework!"
+int_value: 42
+float_value: 3.14159
+boolean_true: true
+boolean_false: false
+null_value: null
+ 
+list_value:
+  - Apple
+  - Banana
+  - Cherry
+ 
+dict_value:
+  name: "Kachain"
+  age: 32
+  skills:
+    - Python
+    - Robot Framework
+    - YAML
